@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../api/api";
 // import styles from "../PainelAutomovel.module.css";
 import styles from "./PainelAutomovel.module.css";
+import AutomovelCard from "../componentes/AutomovelCard";
 
 function PainelAutomovel() {
 

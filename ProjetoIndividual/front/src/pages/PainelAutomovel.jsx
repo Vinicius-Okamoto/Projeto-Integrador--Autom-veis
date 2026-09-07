@@ -12,10 +12,11 @@ function PainelAutomovel() {
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState("");
     const [automoveis, setAutomoveis] = useState([]);
+    const [idBusca, setIdBusca] = useState("");
 
     useEffect(() => {
         api.get("/Automoveis")
-            .then((resposta) => { 
+            .then((resposta) => {
                 if (resposta.status === 204) {
                     setAutomoveis([]);
                 } else {
@@ -48,27 +49,40 @@ function PainelAutomovel() {
                 <div className={styles.vazio}>Nenhum automóvel cadastrado.</div>
             )}
 
-            
 
-            <h3>Automóveis Cadastrados</h3>
 
-            <div className={styles.autoCadastrado}>
-            {automoveis.map((automovel) => (
-                // <div className={styles.card} key={automovel.idAutomovel}>
-                //     <div className={styles.Cadastrado}>
-                //     <p>Tipo: {automovel.tipoAutomovel}</p>
-                //     <p>Nome: {automovel.nomeAutomovel}</p>
-                //     <p>Marca: {automovel.marcaAutomovel}</p>
-                //     <p>Ano: {automovel.anoAutomovel}</p>
-                //     <p>Placa: {automovel.placaAutomovel}</p>
-                //     </div>
-                //     <hr />
-                // </div>
-                <AutomovelCard
-                    key={automovel.idAutomovel}
-                    automovel={automovel}
+            {!carregando && !erro && automoveis.length > 0 && (
+                <>
+                    <h3>Automóveis Cadastrados</h3>
+
+                    <div className={styles.autoCadastrado}>
+                        {automoveis.map((automovel) => (
+                            <AutomovelCard
+                                key={automovel.idAutomovel}
+                                automovel={automovel}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
+
+            <div>
+                <input
+                    type="number"
+                    placeholder="Digite o ID do automóvel"
+                    value={idBusca}
+                    onChange={(e) => setIdBusca(e.target.value)}
                 />
-            ))}
+
+                <button
+                    onClick={() => {
+                        if (idBusca) {
+                            navigate('/automovel/${idBusca}');
+                        }
+                    }}
+                >
+                    Buscar por ID
+                </button>
             </div>
         </main>
     )

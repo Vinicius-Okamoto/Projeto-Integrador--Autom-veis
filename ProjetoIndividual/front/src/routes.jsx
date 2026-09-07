@@ -13,6 +13,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import PainelAutomovel from "./pages/PainelAutomovel";
 import PainelCadastrarAutomovel from "./pages/PainelCadastrarAutomovel";
+import DetalhesAutomovel from "./pages/DetalhesAutomovel";
 
 export const routes = createBrowserRouter([
     {
@@ -23,5 +24,9 @@ export const routes = createBrowserRouter([
     {
         path: "/cadastrar-automovel",
         element: <PainelCadastrarAutomovel />,
+    },
+    {
+        path: "/automovel/:id",
+        element: <DetalhesAutomovel/>,
     }
 ]);

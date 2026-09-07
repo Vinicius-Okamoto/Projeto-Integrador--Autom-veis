@@ -15,7 +15,13 @@ function PainelAutomovel() {
 
     useEffect(() => {
         api.get("/Automoveis")
-            .then((resposta) => { setAutomoveis(resposta.data); })
+            .then((resposta) => { 
+                if (resposta.status === 204) {
+                    setAutomoveis([]);
+                } else {
+                    setAutomoveis(resposta.data);
+                }
+            })
             .catch((erro) => { console.error(erro); setErro("Não foi possível carregar os automóvies."); })
             .finally(() => { setCarregando(false); });
     }, []);
@@ -41,6 +47,8 @@ function PainelAutomovel() {
             {!carregando && !erro && automoveis.length === 0 && (
                 <div className={styles.vazio}>Nenhum automóvel cadastrado.</div>
             )}
+
+            
 
             <h3>Automóveis Cadastrados</h3>
 

@@ -77,7 +77,7 @@ function PainelAutomovel() {
                 <button
                     onClick={() => {
                         if (idBusca) {
-                            navigate('/automovel/${idBusca}');
+                            navigate(`/automovel/${idBusca}`);
                         }
                     }}
                 >

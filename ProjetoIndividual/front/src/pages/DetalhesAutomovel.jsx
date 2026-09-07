@@ -13,7 +13,7 @@ function DetalhesAutomovel() {
 
     useEffect(() => {
 
-        api.get('/Automoveis/${id}')
+        api.get(`/Automoveis/${id}`)
             .then((resposta) => {
                 setAutomovel(resposta.data);
             })

@@ -12,7 +12,7 @@ function AutomovelCard({ automovel }) {
             <p>Ano: {automovel.anoAutomovel}</p>
             <p>Placa: {automovel.placaAutomovel}</p>
 
-            <button onClick={() => navigate('/automovel/${automovel.idAutomovel}')}>Ver detalhes</button>
+            <button onClick={() => navigate(`/automovel/${automovel.idAutomovel}`)}>Ver detalhes</button>
 
         </div>
     )
